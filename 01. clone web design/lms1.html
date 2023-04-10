@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>대시보드</title>
+    <meta charset="utf-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone&display=swap');
+        :root{
+            --knu-red: #d20f17;
+            --sub-text: #666666;
+            --background-color: #ffffff;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            height: 100%;
+        }
+        body{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height:100%;
+        }
+        #left-side-bar {
+            position: fixed;
+            top: 0;
+            width: 54px;
+            height: 100%;
+            background-color: var(--knu-red);
+        }
+        #main-content {
+            width: 100%;
+            height: 100%;
+            background-color: var(--background-color);
+            margin-left:54px;
+        }
+        #right-side-bar {
+            flex-shrink: 0;
+            width: 240px;
+            height: 100%;
+            background-color: var(--background-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .logo {
+            display: block;
+            width: 54px;
+            height: 54px;
+            margin: 10px 0;
+        }
+        #left-side-bar div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 54px;
+            height: 54px;
+            color: var(--background-color);
+        }
+        #left-side-bar div.selected {
+            background-color: var(--background-color);
+            color: var(--knu-red);
+        }
+        #left-side-bar>div:last-child {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .main-title{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: #ccc 1px solid;
+            margin: 0 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background-color: var(--background-color);
+            opacity: 0.9;
+        }
+
+        .card-wrapper{
+            padding: 24px;
+        }
+        .card-blue{
+            --card-color: #00a7cd;
+        }
+        .card-purple{
+            --card-color: #8e44ad;
+        }
+        .card-pink{
+            --card-color: #ff6be6;
+        }
+        .card{
+            width: 260px;
+            height: 260px;
+            background-color: var(--card-color);
+            border-radius: 5px;
+            position: relative;
+            box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.2);
+            overflow: hidden;
+            margin: 0 24px 24px 0;
+            display: inline-block;
+        }
+        .three-dot{
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: var(--background-color);
+            padding: 7px;
+            margin: 3px;
+            border-radius: 100%;
+        }
+        .card-info{
+            position: absolute;
+            bottom: 0;
+            background-color: var(--background-color);
+            padding: 5px 20px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .card-info>span:nth-child(1){
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--card-color);
+            margin-bottom: 5px;
+        }
+        .card-info>span:nth-child(2){
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--sub-text);
+            line-height: 0.9rem;
+        }
+        .card-info>span:nth-child(3){
+            font-size: 0.8rem;
+            font-weight: 300;
+            color: var(--sub-text);
+            margin-bottom: 10px;
+        }
+        .card-info>div{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .right-list>span{
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #444;
+        }
+        .right-list-item{
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .right-list-item>span:nth-child(1),.right-list-item>span:nth-child(3){
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--sub-text);
+        }
+        .right-list-item>div{
+            display: flex;
+            flex-direction: column;
+        }
+        .right-list-item>div>span:nth-child(1){
+            color: #000;
+        }
+        .right-list-item>div>span:nth-child(2),.right-list-item>div>span:nth-child(3){
+            color: var(--sub-text);
+            font-size: 0.8rem;
+            font-weight: 300;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="left-side-bar">
+        <a href="/" class="logo">
+            <img src="./logo.png" alt="logo" width="54px" height="54px">
+        </a>
+        <div>
+            <span class="material-icons-outlined">
+                account_circle
+            </span>
+        </div>
+        <div class="selected">
+            <span class="material-icons-outlined">
+                speed
+            </span>
+        </div>
+        <div>
+            <span class="material-icons-outlined">
+                library_books
+            </span>
+        </div>
+        <div>
+            <span class="material-icons-outlined">
+                logout
+            </span>
+        </div>
+    </div>
+    <div id="main-content">
+        <div class="main-title">
+            <h1> 대시보드 </h1>
+            <span class="material-icons-outlined">
+                more_vert
+            </span>
+        </div>
+        <div class="card-wrapper">
+            <div class="card card-blue">
+                <div class="three-dot">
+                    <span class="material-icons-outlined">
+                        more_vert
+                    </span>
+                </div>
+                <div class="card-info">
+                    <span>과목 1</span>
+                    <span>과목이름이 왜 한번 더 있지?</span>
+                    <span>2023년 1학기</span>
+                    <div>
+                        <span class="material-icons-outlined">
+                            campaign
+                        </span>
+                        <span class="material-icons-outlined">
+                            assignment
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-purple">
+                <div class="three-dot">
+                    <span class="material-icons-outlined">
+                        more_vert
+                    </span>
+                </div>
+                <div class="card-info">
+                    <span>과목 1</span>
+                    <span>과목이름이 왜 한번 더 있지?</span>
+                    <span>2023년 1학기</span>
+                    <div>
+                        <span class="material-icons-outlined">
+                            campaign
+                        </span>
+                        <span class="material-icons-outlined">
+                            assignment
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-pink">
+                <div class="three-dot">
+                    <span class="material-icons-outlined">
+                        more_vert
+                    </span>
+                </div>
+                <div class="card-info">
+                    <span>과목 1</span>
+                    <span>과목이름이 왜 한번 더 있지?</span>
+                    <span>2023년 1학기</span>
+                    <div>
+                        <span class="material-icons-outlined">
+                            campaign
+                        </span>
+                        <span class="material-icons-outlined">
+                            assignment
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="right-side-bar">
+        <img style="margin: 20px 0"alt="Canvas by Instructure" src="./sidebar_logo.png" width="150px">
+        <div class="right-list todo">
+            <span>할 일</span>
+            <hr>
+            <div class="right-list-item">
+                <span class="material-icons-outlined">
+                    assignment
+                </span>
+                <div>
+                    <span>n주차 과제: 대충 과제에 대한 설명들</span>
+                    <span>과목명</span>
+                    <span>5점 · 4월 11일 오후 11:59</span>
+                </div>
+                <span class="material-icons-outlined">
+                    close
+                </span>
+            </div>
+            <div class="right-list-item">
+                <span class="material-icons-outlined">
+                    assignment
+                </span>
+                <div>
+                    <span>n주차 과제: 대충 과제에 대한 설명들</span>
+                    <span>과목명</span>
+                    <span>5점 · 4월 11일 오후 11:59</span>
+                </div>
+                <span class="material-icons-outlined">
+                    close
+                </span>
+            </div>
+        </div>
+        <div class="right-list expected">
+            <span>예정</span>
+            <hr>
+            <div class="right-list-item">
+                <span class="material-icons-outlined">
+                    assignment
+                </span>
+                <div>
+                    <span>n주차 과제: 대충 과제에 대한 설명들</span>
+                    <span>과목명</span>
+                    <span>5점 · 4월 11일 오후 11:59</span>
+                </div>
+                <span class="material-icons-outlined">
+                    close
+                </span>
+            </div>
+            <div class="right-list-item">
+                <span class="material-icons-outlined">
+                    assignment
+                </span>
+                <div>
+                    <span>n주차 과제: 대충 과제에 대한 설명들</span>
+                    <span>과목명</span>
+                    <span>5점 · 4월 11일 오후 11:59</span>
+                </div>
+                <span class="material-icons-outlined">
+                    close
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
