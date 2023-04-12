@@ -4,7 +4,7 @@ Node.js를 이용하여 프로그래머스 문제를 풀어올 것.
 * [프로그래머스 86971(완전 탐색)](https://school.programmers.co.kr/learn/courses/30/lessons/86971)
 * [프로그래머스 1844(BFS)](https://school.programmers.co.kr/learn/courses/30/lessons/1844)
 
-# 공부해볼 것
+# 공부해보면 좋을 것들
 * node.js의 정의는?(javascript와 node.js의 차이)
 * LTS?
 * npm?
