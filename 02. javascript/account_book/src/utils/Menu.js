@@ -1,4 +1,4 @@
-const { readFromStdIn } = require('./IO');
+const { inputWithQuestion } = require('./IO');
 
 module.exports = class Menu {
     constructor() {
@@ -34,10 +34,11 @@ module.exports = class Menu {
         this.menus.forEach(({description}, index) => {
             console.log(`${index + 1}. ${description}`);
         });
-        let option = await readFromStdIn("메뉴를 선택해주세요: ");
-        while (isNaN(option) || option < 1 || option > this.menus.length) {
-            option = await readFromStdIn("잘못된 메뉴입니다. 다시 선택해주세요: ");
-        }
-        await this.menus[option - 1].action();
+        const selected = await inputWithQuestion({
+            question: "메뉴를 선택해주세요: ",
+            requestion: "잘못된 메뉴입니다. 다시 선택해주세요: ",
+            validate: (e) => !isNaN(e) && e >= 1 && e <= this.menus.length
+        });
+        await this.menus[selected - 1].action();
     }
 }

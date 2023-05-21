@@ -1,3 +1,4 @@
+require("./utils/etc");
 const { createMenu } = require('./utils/Menu');
 
 const menu = createMenu(
