@@ -50,7 +50,7 @@ module.exports = class Record {
         {
             key: "price",
             question: "지출 금액을 입력하세요(단위: 원): ",
-            defalt: () => -1,
+            defalt: () => "-1",
             beforValidate: (price) => {
                 if(typeof price === 'string')
                     return parseInt(price);
