@@ -1,8 +1,9 @@
-const { readRecords, writeRecords } = require('../utils/IO');
-const { createByInput } = require('../utils/Record');
+import { readRecords, writeRecords } from '../utils/IO.js';
+import Record from '../utils/Record.js';
 
-module.exports = async () => {
-    const [record,records] = await Promise.all([createByInput(), readRecords()]);
+export default async () => {
+    const [record,records] = await Promise.all([Record.createByInput(), readRecords()]);
+    Record.printTitle();
     record.print();
     await writeRecords([...records, record]);
 }

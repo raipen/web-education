@@ -1,3 +1,5 @@
-module.exports = () => {
-    console.log('removeRecord');
+import { readRecords } from '../utils/IO.js';
+
+export default () => {
+    
 }

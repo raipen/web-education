@@ -1,6 +1,6 @@
-const { inputWithQuestion } = require('./IO');
+import { inputWithQuestion } from './IO.js';
 
-module.exports = class Menu {
+export default class Menu {
     constructor() {
         this.menus = [];
     }

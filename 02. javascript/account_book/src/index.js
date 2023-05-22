@@ -1,11 +1,15 @@
-require("./utils/etc");
-const { createMenu } = require('./utils/Menu');
+import './utils/appendPrototype.js';
+import Menu from './utils/Menu.js';
+import addRecord from './actions/addRecord.js';
+import searchRecord from './actions/searchRecord.js';
+import updateRecord from './actions/updateRecord.js';
+import removeRecord from './actions/removeRecord.js';
 
-const menu = createMenu(
-    ["지출 내역 입력", require('./actions/addRecord')],
-    ["지출 내역 조회", require('./actions/searchRecord')],
-    ["지출 내역 수정", require('./actions/updateRecord')],
-    ["지출 내역 삭제", require('./actions/removeRecord')],
+const menu = Menu.createMenu(
+    ["지출 내역 입력", addRecord],
+    ["지출 내역 조회", searchRecord],
+    ["지출 내역 수정", updateRecord],
+    ["지출 내역 삭제", removeRecord],
     ["종료", process.exit]
 );
 
