@@ -19,6 +19,7 @@ export const readFromStdIn = (question) => {
         });
     });
 }
+
 export const inputWithQuestion = async ({ question, requestion = question, defalt = () => null, validate = () => true, afterValidate = e => e }) => {
     let input = await readFromStdIn(question) ?? defalt();
     while (!validate(input)) {
@@ -26,6 +27,7 @@ export const inputWithQuestion = async ({ question, requestion = question, defal
     }
     return afterValidate(input);
 }
+
 export const readRecords = () => {
     return new Promise((resolve, reject) => {
         fs.readFile(RECORDS_FILE, (err, data) => {
@@ -39,6 +41,7 @@ export const readRecords = () => {
         });
     });
 }
+
 export const writeRecords = (records) => {
     if (!fs.existsSync('public')) {
         fs.mkdirSync('public');
