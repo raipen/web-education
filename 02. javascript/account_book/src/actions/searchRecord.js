@@ -19,9 +19,9 @@ const searchCategory = async () => {
             records.filter((record) => record.category === category).forEach((record) => {
                 record.print();
             });
-        }]),
-        ["종료", process.exit]
-    ).selectMenu();
+        }])
+        ["돌아가기", () => {}]
+    ).selectMenu("확인할 카테고리를 선택해주세요", "잘못된 카테고리입니다. 다시 선택해주세요: ");
 }
 
 const searchDescription = async () => {
@@ -44,6 +44,6 @@ export default async () => {
         ["전체 내역 조회", all],
         ["카테고리 조회", searchCategory],
         ["상세 내용 검색", searchDescription],
-        ["종료", process.exit]
-    ).selectMenu();
+        ["돌아가기", () => {}]
+    ).selectMenu("조회할 방법을 선택해주세요: ", "잘못된 방법입니다. 다시 선택해주세요: ");
 }

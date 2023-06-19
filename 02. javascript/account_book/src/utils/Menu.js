@@ -30,13 +30,13 @@ export default class Menu {
         return menu;
     }
 
-    async selectMenu() {
+    async selectMenu(question = "메뉴를 선택해주세요: ", requestion = "잘못된 메뉴입니다. 다시 선택해주세요: "){
         this.menus.forEach(({description}, index) => {
             console.log(`${index + 1}. ${description}`);
         });
         const selected = await inputWithQuestion({
-            question: "메뉴를 선택해주세요: ",
-            requestion: "잘못된 메뉴입니다. 다시 선택해주세요: ",
+            question: question,
+            requestion: requestion,
             validate: (e) => !isNaN(e) && e >= 1 && e <= this.menus.length
         });
         await this.menus[selected - 1].action();
