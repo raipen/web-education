@@ -62,6 +62,13 @@ main branch는 바로 배포가능한 상태의 코드만 올려둔 채로
 이때 merge하는 방식에는 크게 그냥 일반적인 merge, squash merge, rebase merge가 있다. 각각의 차이점은 다음 링크에서 확인
 https://velog.io/@kmg2933/Git-Merge-Squash-Rebase-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0
 
+
+### 기타
+* ```git diff``` : 수정된 파일들을 확인 ( 근데 그냥 github이나 다른 gui 툴을 사용하는게 편하다.)
+* git에서 관리하지 않을 파일들은 .gitignore 파일에 작성해두면 git이 무시한다.
+* ```git add 파일명```을 하나하나 하기 귀찮다면, ```git add .```으로 한번에 stage에 올릴 수 있다.
+* ```git commit -am "커밋 메시지"``` : add와 commit을 한번에 할 수 있다. 이런 여러 옵션들이 많은데 알아서 찾아보자.
+
 ## 2. github
 github란?
 git으로 관리하는 폴더를 원격 저장소로 올려놓는 것이다.
@@ -79,7 +86,9 @@ git으로 관리하는 폴더를 원격 저장소로 올려놓는 것이다.
 1. ```git remote add origin 원격저장소주소``` : 원격 저장소를 origin이라는 이름으로 추가
 2. ```git push -u origin master``` : origin(앞에서 이름 붙인 원격 저장소)에 master branch를 push(깃헙의 안내대로 git branch -M main으로 변경한 경우에는 master가 아닌 main으로 입력해야 한다.)
 
-이때, -u 옵션은 최초 한번만 사용하면 된다. 이후에는 ```git push```만 입력해도 된다.
+이때, -u 옵션은 **새로운 브랜치를 올릴 때마다** 최초 한번만 사용하면 된다. 한번 올린 적 있는 branch를 올릴 때는 ```git push```만 입력해도 된다.
+
+
 
 한번 로컬(컴퓨터) 저장소와 원격 저장소를 연결하면, 다음과 같은 명령어들을 사용할 수 있다.
 git push : 원격 저장소에 변경사항을 업로드
