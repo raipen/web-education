@@ -4,7 +4,7 @@ const connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '1234',
-  database : 'asdf'
+  database : 'todolist'
 }); 
 const app = express()
 const port = 3000
@@ -20,6 +20,15 @@ app.post('/', (req, res) => {
 app.get('/todo', (req, res) => {
   connection.connect();
   connection.query('SELECT * FROM todo', function (error, results, fields) {
+    if (error) throw error;
+    res.send(results);
+  });
+  connection.end();
+})
+
+app.post('/todo', (req, res) => {
+  connection.connect();
+  connection.query('INSERT INTO todo (title, content) VALUES ('+req.body.sodyd+', "test")', function (error, results, fields) {
     if (error) throw error;
     res.send(results);
   });
